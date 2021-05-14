@@ -48,6 +48,9 @@ const detailSchema = new mongoose.Schema(
     comments: {
       type: String,
     },
+    gender: {
+      type: String,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

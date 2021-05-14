@@ -63,17 +63,20 @@ router.get("/details/:id", auth, async (req, res) => {
 router.patch("/details/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
-    "_id",
     "name",
-    "ticker",
-    "buyingDate",
-    "buyingPrice",
-    "buyingQuantity",
-    "stoploss",
-    "sellingDate",
-    "sellingPrice",
-    "sellingQuantity",
-    "description",
+    "caseNumber",
+    "mobileNumber",
+    "date1",
+    "diagnosis1",
+    "prescription1",
+    "date2",
+    "diagnosis2",
+    "prescription2",
+    "date3",
+    "diagnosis3",
+    "prescription3",
+    "comments",
+    "gender",
   ];
   const isValidOperation = updates.every((update) => {
     return allowedUpdates.includes(update);
