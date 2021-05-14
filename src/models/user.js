@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Stock = require("./stock");
+const Detail = require("./detail");
 
 const userSchema = new mongoose.Schema(
   {
@@ -63,8 +63,8 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.virtual("stocks", {
-  ref: "Stock",
+userSchema.virtual("details", {
+  ref: "Detail",
   localField: "_id",
   foreignField: "owner",
 });
@@ -115,7 +115,7 @@ userSchema.pre("save", async function (next) {
 
 userSchema.pre("remove", async function (next) {
   const user = this;
-  await Stock.deleteMany({ owner: user._id });
+  await Detail.deleteMany({ owner: user._id });
   next();
 });
 

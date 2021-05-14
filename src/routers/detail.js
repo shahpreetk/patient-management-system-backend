@@ -1,22 +1,22 @@
 const express = require("express");
 const router = new express.Router();
 const auth = require("../middleware/auth");
-const Stock = require("../models/stock");
+const Detail = require("../models/detail");
 
-router.post("/stocks", auth, async (req, res) => {
-  const stock = new Stock({
+router.post("/details", auth, async (req, res) => {
+  const detail = new Detail({
     ...req.body,
     owner: req.user._id,
   });
   try {
-    await stock.save();
-    res.status(201).send(stock);
+    await detail.save();
+    res.status(201).send(detail);
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.get("/stocks", auth, async (req, res) => {
+router.get("/details", auth, async (req, res) => {
   const match = {};
   const sort = {};
 
@@ -31,7 +31,7 @@ router.get("/stocks", auth, async (req, res) => {
   try {
     await req.user
       .populate({
-        path: "stocks",
+        path: "details",
         match,
         options: {
           limit: parseInt(req.query.limit),
@@ -40,27 +40,27 @@ router.get("/stocks", auth, async (req, res) => {
         },
       })
       .execPopulate();
-    res.send(req.user.stocks);
+    res.send(req.user.details);
   } catch (e) {
     res.status(500).send();
   }
 });
 
-router.get("/stocks/:id", auth, async (req, res) => {
+router.get("/details/:id", auth, async (req, res) => {
   const _id = req.params.id;
 
   try {
-    const stock = await Stock.findOne({ _id, owner: req.user._id });
-    if (!stock) {
+    const detail = await Detail.findOne({ _id, owner: req.user._id });
+    if (!detail) {
       return res.status(404).send();
     }
-    res.send(stock);
+    res.send(detail);
   } catch (e) {
     res.status(500).send(e);
   }
 });
 
-router.patch("/stocks/:id", auth, async (req, res) => {
+router.patch("/details/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
     "_id",
@@ -84,35 +84,35 @@ router.patch("/stocks/:id", auth, async (req, res) => {
   }
 
   try {
-    const stock = await Stock.findOne({
+    const detail = await Detail.findOne({
       _id: req.params.id,
       owner: req.user._id,
     });
 
-    if (!stock) {
+    if (!detail) {
       return res.status(404).send();
     }
     updates.forEach((update) => {
-      stock[update] = req.body[update];
+      detail[update] = req.body[update];
     });
 
-    await stock.save();
-    res.send(stock);
+    await detail.save();
+    res.send(detail);
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.delete("/stocks/:id", auth, async (req, res) => {
+router.delete("/details/:id", auth, async (req, res) => {
   try {
-    const stock = await Stock.findOneAndDelete({
+    const detail = await Detail.findOneAndDelete({
       _id: req.params.id,
       owner: req.user._id,
     });
-    if (!stock) {
+    if (!detail) {
       return res.status(404).send();
     }
-    res.send(stock);
+    res.send(detail);
   } catch (e) {
     res.status(500).send();
   }
