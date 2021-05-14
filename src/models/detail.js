@@ -7,42 +7,45 @@ const detailSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    ticker: {
+    caseNumber: {
       type: String,
       required: true,
-      uppercase: true,
     },
-    buyingDate: {
+    mobileNumber: {
+      type: Number,
+      required: true,
+    },
+    date1: {
       type: Date,
       required: true,
     },
-    buyingPrice: {
-      type: Number,
+    diagnosis1: {
+      type: String,
       required: true,
     },
-    buyingQuantity: {
-      type: Number,
+    prescription1: {
+      type: String,
       required: true,
     },
-    stoploss: {
-      type: Number,
-    },
-    sellingDate: {
+    date2: {
       type: Date,
     },
-    sellingPrice: {
-      type: Number,
+    diagnosis2: {
+      type: String,
     },
-    sellingQuantity: {
-      type: Number,
+    prescription2: {
+      type: String,
     },
-    remainingQuantity: {
-      type: Number,
+    date3: {
+      type: Date,
     },
-    netResult: {
-      type: Number,
+    diagnosis3: {
+      type: String,
     },
-    description: {
+    prescription3: {
+      type: String,
+    },
+    comments: {
       type: String,
     },
     owner: {
