@@ -1,10 +1,10 @@
-# inventostocks-backend
+# patient-management-system-backend
 
-Backend for stock inventory project
+Backend for patient inventory project
 
-## About Inventostock
+## About the system
 
-It is a website that allows you to keep a track of your shares and helps you have a control on your stock budget.
+It is a website that allows doctors to keep a track of patients and their prescriptions.
 
 ### Makers
 
