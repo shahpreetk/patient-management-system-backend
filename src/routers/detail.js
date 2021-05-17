@@ -66,6 +66,7 @@ router.patch("/details/:id", auth, async (req, res) => {
     "name",
     "caseNumber",
     "mobileNumber",
+    "bloodGroup",
     "date1",
     "diagnosis1",
     "prescription1",

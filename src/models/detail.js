@@ -15,6 +15,9 @@ const detailSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    bloodGroup: {
+      type: String,
+    },
     date1: {
       type: Date,
       required: true,
