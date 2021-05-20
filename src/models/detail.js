@@ -18,36 +18,27 @@ const detailSchema = new mongoose.Schema(
     bloodGroup: {
       type: String,
     },
-    date1: {
-      type: Date,
+    height: {
+      type: Number,
       required: true,
     },
-    diagnosis1: {
-      type: String,
+    weight: {
+      type: Number,
       required: true,
     },
-    prescription1: {
-      type: String,
-      required: true,
-    },
-    date2: {
-      type: Date,
-    },
-    diagnosis2: {
-      type: String,
-    },
-    prescription2: {
-      type: String,
-    },
-    date3: {
-      type: Date,
-    },
-    diagnosis3: {
-      type: String,
-    },
-    prescription3: {
-      type: String,
-    },
+    medicals: [
+      {
+        date: {
+          type: Date,
+        },
+        diagnosis: {
+          type: String,
+        },
+        prescription: {
+          type: String,
+        },
+      },
+    ],
     comments: {
       type: String,
     },
