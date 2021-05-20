@@ -91,7 +91,18 @@ router.patch("/details/:id", auth, async (req, res) => {
       return res.status(404).send();
     }
     updates.forEach((update) => {
-      detail[update] = req.body[update];
+      if (update === "medicals") {
+        const date = req.body.medicals[0].date;
+        const diagnosis = req.body.medicals[0].diagnosis;
+        const prescription = req.body.medicals[0].prescription;
+        detail.medicals = detail.medicals.concat({
+          date,
+          diagnosis,
+          prescription,
+        });
+      } else {
+        detail[update] = req.body[update];
+      }
     });
 
     await detail.save();
