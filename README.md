@@ -1,11 +1,13 @@
-# patient-management-system-backend
+# Patient Management System: Backend (W.I.P 🔩⚙️ )
 
-Backend for patient inventory project
+Backend for patient management system.
 
 ## About the system
 
-It is a website that allows doctors to keep a track of patients and their prescriptions.
+It is a website that allows doctors to keep a track of their patients and the patients prescriptions.
+
+🖥 Frontend Website Repo: https://github.com/shahpreetk/patient-management-system-frontend
 
 ### Makers
 
-Made with ❤️ by [@shahpreetk](https://github.com/shahpreet) and [@utk09](https://github.com/utk09)
+Made with ❤️ by [@utk09](https://github.com/utk09) and [@shahpreetk](https://github.com/shahpreet)
