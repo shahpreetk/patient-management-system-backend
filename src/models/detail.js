@@ -42,11 +42,12 @@ const detailSchema = new mongoose.Schema(
         prescription: {
           type: String,
         },
+        comments: {
+          type: String,
+        },
       },
     ],
-    comments: {
-      type: String,
-    },
+
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
