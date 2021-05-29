@@ -17,9 +17,14 @@ const detailSchema = new mongoose.Schema(
     },
     bloodGroup: {
       type: String,
+      required: true,
     },
     height: {
       type: Number,
+      required: true,
+    },
+    gender: {
+      type: String,
       required: true,
     },
     weight: {
@@ -40,9 +45,6 @@ const detailSchema = new mongoose.Schema(
       },
     ],
     comments: {
-      type: String,
-    },
-    gender: {
       type: String,
     },
     owner: {
