@@ -63,6 +63,7 @@ router.get("/details/:id", auth, async (req, res) => {
 router.patch("/details/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
+    "_id",
     "name",
     "caseNumber",
     "mobileNumber",
