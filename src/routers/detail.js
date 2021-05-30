@@ -94,10 +94,12 @@ router.patch("/details/:id", auth, async (req, res) => {
         const date = req.body.medicals[0].date;
         const diagnosis = req.body.medicals[0].diagnosis;
         const prescription = req.body.medicals[0].prescription;
+        const comments = req.body.medicals[0].comments;
         detail.medicals = detail.medicals.concat({
           date,
           diagnosis,
           prescription,
+          comments,
         });
       } else {
         detail[update] = req.body[update];
