@@ -70,7 +70,6 @@ router.patch("/details/:id", auth, async (req, res) => {
     "medicals",
     "height",
     "weight",
-    "comments",
     "gender",
   ];
   const isValidOperation = updates.every((update) => {
