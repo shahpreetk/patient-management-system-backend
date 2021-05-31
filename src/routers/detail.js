@@ -129,4 +129,31 @@ router.delete("/details/:id", auth, async (req, res) => {
   }
 });
 
+router.delete("/details/medical/:id1/:id2", auth, async (req, res) => {
+  try {
+    const detail = await Detail.findOne({
+      _id: req.params.id1,
+      owner: req.user._id,
+    });
+
+    if (!detail) {
+      return res.status(404).send();
+    }
+
+    let thingarray = [];
+    detail.medicals.map((medical) => {
+      if (medical._id != req.params.id2) {
+        thingarray.push(medical);
+      } else return null;
+    });
+
+    detail.medicals = thingarray;
+
+    await detail.save();
+    res.send(detail);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 module.exports = router;
